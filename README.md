@@ -31,5 +31,5 @@
 </p>
 
 <p align="center">
-  <img width="320" height="700" src="https://github.com/NeX0Zz/Coffee/blob/main/6.jpeg">
+  <img width="320" height="700" src="https://github.com/NeX0Zz/CoffeeShop/blob/main/6.jpeg">
 </p>
