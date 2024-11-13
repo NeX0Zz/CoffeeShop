@@ -52,12 +52,15 @@ class NearbyCafesInteractor: NSObject, NearbyCafesInteractorProtocol, CLLocation
     }
 
     internal func calculateDistances(for coffeeShops: [CoffeeShop]) {
-        
+        guard let currentLocation = currentLocation else {
+            presenter?.didFailFetchingCoffeeShops(with: "Не удалось получить текущее местоположение.")
+            return
+        }
 
         let coffeeShopsWithDistance = coffeeShops.compactMap { shop -> (CoffeeShop, CLLocationDistance)? in
             guard let lat = shop.point.latitudeDouble, let lon = shop.point.longitudeDouble else { return nil }
             let shopLocation = CLLocation(latitude: lat, longitude: lon)
-            let distance = currentLocation!.distance(from: shopLocation)
+            let distance = currentLocation.distance(from: shopLocation)
             return (shop, distance)
         }
         presenter?.didFetchCoffeeShopsWithDistance(coffeeShopsWithDistance)
